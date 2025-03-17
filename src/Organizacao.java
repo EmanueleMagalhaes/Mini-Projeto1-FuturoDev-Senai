@@ -1,54 +1,33 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Organizacao {
-
-    //Atributos
+class Organizacao {
     private String nome;
-    private ArrayList<ProjetoSustentavel> projetos;
+    private List<ProjetoSustentavel> listaProjetos;
 
-    //Construtor vazio
-    public Organizacao() {
-    }
-
-    //Construtor parametrizado
-    public Organizacao(String nome, ArrayList<ProjetoSustentavel> listaProjetos) {
+    public Organizacao(String nome) {
         this.nome = nome;
-        this.projetos = listaProjetos;
+        this.listaProjetos = new ArrayList<>();
     }
 
-    // get e Set (para realizar o encapsulamento)
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public ArrayList<ProjetoSustentavel> getProjetos() {
-        return projetos;
-    }
-
-    public void setProjetos(ArrayList<ProjetoSustentavel> projetos) {
-        this.projetos = projetos;
-    }
-
-    //Metodos
+    // Método para adicionar um projeto à organização
     public void adicionarProjeto(ProjetoSustentavel projeto) {
-        this.projetos = new ArrayList<>();
+        listaProjetos.add(projeto);
     }
 
-
-    //Lista todos os projetos cadastrados na organização
-
-    public String listaProjetos() {
-        String resultado = "";
-        for(ProjetoSustentavel projeto : projetos){
-            resultado += projeto.exibirDetalhes() + "\n";
-
+    // Método para listar os projetos da organização
+    public void listarProjetos() {
+        System.out.println("Projetos da organização " + nome + ":");
+        for (ProjetoSustentavel projeto : listaProjetos) {
+            System.out.println("- " + projeto.getNome());
         }
-        return resultado;
     }
 
+    public List<ProjetoSustentavel> getListaProjetos() {
+        return listaProjetos;
+    }
 }
